@@ -1,9 +1,12 @@
 sudo: required
 services:
-  - docker
-
+- docker
 before_install:
-  - docker build -t vishnued/docker-react -f Dockerfile.dev .
-
+- docker build -t vishnued/docker-react -f Dockerfile.dev .
 script:
-  - docker run vishnued/docker-react npm run test -- --coverage
+- docker run vishnued/docker-react npm run test -- --coverage
+deploy:
+  provider: heroku
+  app: vi-docker-react
+  api_key:
+    secure: aZjmulC3DuSAj0Ih+56ME4bPfR+CP3wsDaJlFHTkyD+AiqZzXSzd2ByVyDRlyYB0qzqD4avl3eLmCBIk11p3Tpf8AraMe2MzDwz2IWh568y16bYDzYFgLMzxDd22jqO4W94e/xBTzIXNyLUkZh4c2Whb/0NBHiYGzqSOVEKhMDMCR55fv7QvmWTaLNOml/V2JlwLV57Rqjno42bIcBrYzSmSiLWf+H2pHriLYvXzcumFHn31x7ixxi+wxy02iyUSNmoQP26yUP6em24NzyUmF7Z87eVEqzDJn+r7PGWPjUPU0DGsEMwPWJgb6TirIZQYL//FYKbQC9uJoLP036B9n2CjmbBal8sia7Tz93OibBs4DdQfwvmsyDHwVJ+SBYjBPgFyFINnRgbw/wCdMY6E+P+PHCMqIP91KctOvURVgalwYGyAG/qHVVarOmsC1W7bCV89DZEvLag9l4dbSsX188dIk0GzFSUqiMRzzxClfPZ7t1iuOqpru4fu/opYGf/gGDIG6ib5FG1C7tzIVot23dua2Bkk8Fo58CRKFXVxV3GS96vIv33cgO+J9DGJQZpn4STuTxgBKYrYAP8ZUk9dYnD1vd4PwBX8GQYPfv6QcLAkQr8iw+Wg0dWA7HmchZ7dNv49dOn8LXcmM1fuKnjTccbRyDGcETXLpV3EkUNSAPs=
